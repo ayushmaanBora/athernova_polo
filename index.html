@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DAD - Deukaa Architects & Developers</title>
+    <title>Aethernova Technologies - Engineering Intelligence. Enabling Tomorrow.</title>
     <style>
         * {
             margin: 0;
@@ -11,21 +11,11 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --earth-brown: #8B4513;
-            --sage-green: #87A96B;
-            --warm-beige: #F5F5DC;
-            --deep-forest: #2F4F2F;
-            --soft-white: #FEFEFE;
-            --terracotta: #CD853F;
-            --stone-gray: #696969;
-        }
-
         body {
-            font-family: 'Georgia', serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: var(--deep-forest);
-            background-color: var(--soft-white);
+            color: #333;
+            background: #0a0a0a;
             overflow-x: hidden;
         }
 
@@ -34,7 +24,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
             padding: 1rem 0;
@@ -42,7 +32,7 @@
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -52,348 +42,464 @@
 
         .logo {
             font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--earth-brown);
+            font-weight: 700;
+            color: #00d4ff;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
             gap: 2rem;
+            align-items: center;
         }
 
         .nav-links a {
+            color: #fff;
             text-decoration: none;
-            color: var(--deep-forest);
-            transition: color 0.3s ease;
             font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
         }
 
         .nav-links a:hover {
-            color: var(--sage-green);
+            color: #00d4ff;
         }
 
-        .mobile-menu {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: #00d4ff;
+            transition: width 0.3s ease;
         }
 
-        .mobile-menu span {
-            width: 25px;
-            height: 3px;
-            background: var(--earth-brown);
-            margin: 3px 0;
-            transition: 0.3s;
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-nav {
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            color: white !important;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .cta-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
         }
 
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23F5F5DC" width="1200" height="800"/><path fill="%2387A96B" opacity="0.1" d="M0,400 Q300,200 600,400 T1200,400 V800 H0 Z"/><circle fill="%238B4513" opacity="0.1" cx="200" cy="150" r="50"/><circle fill="%23CD853F" opacity="0.1" cx="1000" cy="200" r="80"/></svg>');
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            color: white;
             position: relative;
+            overflow: hidden;
         }
 
         .hero-content {
-            max-width: 800px;
+            text-align: center;
+            color: white;
+            z-index: 2;
+            max-width: 1000px;
             padding: 0 2rem;
-            animation: fadeInUp 1s ease-out;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
+            font-weight: 700;
             margin-bottom: 1rem;
-            font-weight: 300;
-            letter-spacing: 2px;
+            background: linear-gradient(135deg, #fff 0%, #00d4ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease;
         }
 
-        .hero p {
-            font-size: 1.3rem;
+        .hero-subtitle {
+            font-size: 1.5rem;
             margin-bottom: 2rem;
-            opacity: 0.9;
+            color: #ccc;
+            animation: fadeInUp 1s ease 0.2s both;
         }
 
-        .cta-button {
-            display: inline-block;
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .btn {
             padding: 1rem 2rem;
-            background: var(--sage-green);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
             transition: all 0.3s ease;
-            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
         }
 
-        .cta-button:hover {
-            background: var(--earth-brown);
-            transform: translateY(-2px);
+        .btn-primary {
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #00d4ff;
+            border: 2px solid #00d4ff;
+        }
+
+        .btn-secondary:hover {
+            background: #00d4ff;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Animated Background */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="grad1" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:%2300d4ff;stop-opacity:0.1"/><stop offset="100%" style="stop-color:%2300d4ff;stop-opacity:0"/></radialGradient></defs><circle cx="200" cy="200" r="3" fill="url(%23grad1)"><animate values="3;6;3" dur="4s" repeatCount="indefinite"/></circle><circle cx="800" cy="300" r="2" fill="url(%23grad1)"><animate values="2;5;2" dur="3s" repeatCount="indefinite"/></circle><circle cx="400" cy="600" r="4" fill="url(%23grad1)"><animate values="4;7;4" dur="5s" repeatCount="indefinite"/></circle></svg>');
+            opacity: 0.3;
+            animation: float 20s ease-in-out infinite;
         }
 
         /* Sections */
         .section {
             padding: 5rem 0;
-            max-width: 1200px;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1400px;
             margin: 0 auto;
-            padding-left: 2rem;
-            padding-right: 2rem;
+            padding: 0 2rem;
         }
 
-        .section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
+        .section-title {
             text-align: center;
-            color: var(--earth-brown);
-            font-weight: 300;
-        }
-
-        /* Highlights Grid */
-        .highlights {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .highlight-card {
-            text-align: center;
-            padding: 2rem;
-            background: var(--warm-beige);
-            border-radius: 10px;
-            transition: transform 0.3s ease;
-        }
-
-        .highlight-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .highlight-number {
             font-size: 3rem;
-            font-weight: bold;
-            color: var(--sage-green);
-            margin-bottom: 1rem;
-        }
-
-        .highlight-text {
-            font-size: 1.1rem;
-            color: var(--deep-forest);
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: white;
+            background: linear-gradient(135deg, #fff 0%, #00d4ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         /* About Section */
+        .about {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+        }
+
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            gap: 4rem;
             align-items: center;
-            margin: 3rem 0;
         }
 
         .about-text {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             line-height: 1.8;
+            color: #ccc;
         }
 
-        .about-image {
-            width: 100%;
-            height: 400px;
-            background: var(--sage-green);
-            border-radius: 10px;
-            opacity: 0.7;
+        .about-features {
+            display: grid;
+            gap: 1.5rem;
         }
 
-        /* Projects Grid */
+        .feature-item {
+            padding: 1.5rem;
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 15px;
+            border-left: 4px solid #00d4ff;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateX(10px);
+            background: rgba(0, 212, 255, 0.2);
+        }
+
+        .feature-item h3 {
+            color: #00d4ff;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Projects Section */
+        .projects {
+            background: #0a0a0a;
+            color: white;
+        }
+
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
         }
 
         .project-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
             transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-
-        .project-image {
-            width: 100%;
-            height: 250px;
-            background: linear-gradient(45deg, var(--sage-green), var(--terracotta));
+            border: 1px solid rgba(0, 212, 255, 0.2);
             position: relative;
             overflow: hidden;
         }
 
-        .project-info {
-            padding: 1.5rem;
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            transition: left 0.5s ease;
         }
 
-        .project-title {
-            font-size: 1.3rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            color: var(--earth-brown);
+        .project-card:hover::before {
+            left: 100%;
         }
 
-        .project-details {
-            color: var(--stone-gray);
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+        }
+
+        .project-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .project-card h3 {
+            font-size: 1.8rem;
             margin-bottom: 1rem;
-            font-size: 0.9rem;
+            color: #00d4ff;
         }
 
-        .project-description {
+        .project-card p {
+            color: #ccc;
             line-height: 1.6;
+            margin-bottom: 2rem;
         }
 
-        /* Services Grid */
-        .services-grid {
+        /* POLO Spotlight */
+        .polo-spotlight {
+            background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
+            color: white;
+            position: relative;
+        }
+
+        .polo-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .polo-features {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .polo-feature {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .polo-feature:hover {
+            background: rgba(0, 212, 255, 0.2);
+            transform: translateX(10px);
+        }
+
+        .polo-feature-icon {
+            width: 40px;
+            height: 40px;
+            background: #00d4ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .polo-visual {
+            text-align: center;
+            padding: 3rem;
+            background: rgba(0, 212, 255, 0.05);
+            border-radius: 20px;
+            border: 2px dashed rgba(0, 212, 255, 0.3);
+        }
+
+        .polo-visual h3 {
+            color: #00d4ff;
+            margin-bottom: 1rem;
+        }
+
+        /* Investor Section */
+        .investor {
+            background: #0a0a0a;
+            color: white;
+        }
+
+        .investor-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin: 3rem 0;
+            margin-top: 3rem;
         }
 
-        .service-card {
-            padding: 2rem;
-            background: white;
-            border-left: 4px solid var(--sage-green);
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-        }
-
-        .service-card:hover {
-            transform: translateX(10px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-
-        .service-title {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: var(--earth-brown);
-            margin-bottom: 1rem;
-        }
-
-        /* Contact Section */
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin: 3rem 0;
-        }
-
-        .contact-form {
-            background: var(--warm-beige);
+        .investor-card {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             padding: 2rem;
             border-radius: 15px;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-            color: var(--deep-forest);
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid transparent;
-            border-radius: 8px;
-            background: white;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--sage-green);
-        }
-
-        .submit-btn {
-            background: var(--earth-brown);
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: bold;
+            text-align: center;
+            border: 1px solid rgba(0, 212, 255, 0.2);
             transition: all 0.3s ease;
         }
 
-        .submit-btn:hover {
-            background: var(--sage-green);
-            transform: translateY(-2px);
+        .investor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 212, 255, 0.2);
         }
 
-        .contact-info {
-            padding: 2rem 0;
-        }
-
-        .contact-item {
-            margin-bottom: 2rem;
-            padding: 1rem;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        .contact-item h4 {
-            color: var(--earth-brown);
+        .investor-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #00d4ff;
             margin-bottom: 0.5rem;
+        }
+
+        .investor-label {
+            color: #ccc;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Careers Section */
+        .careers {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+        }
+
+        .careers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .career-card {
+            background: rgba(0, 212, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .career-card:hover {
+            background: rgba(0, 212, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .career-card h3 {
+            color: #00d4ff;
+            margin-bottom: 1rem;
         }
 
         /* Footer */
         footer {
-            background: var(--deep-forest);
+            background: #000;
             color: white;
-            text-align: center;
-            padding: 3rem 0;
-            margin-top: 5rem;
+            padding: 3rem 0 1rem;
         }
 
-        .social-links {
-            margin: 2rem 0;
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
         }
 
-        .social-links a {
-            display: inline-block;
-            margin: 0 1rem;
-            padding: 1rem;
-            background: var(--sage-green);
-            color: white;
+        .footer-section h3 {
+            color: #00d4ff;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #ccc;
             text-decoration: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            line-height: 30px;
-            transition: all 0.3s ease;
+            transition: color 0.3s ease;
         }
 
-        .social-links a:hover {
-            background: var(--terracotta);
-            transform: translateY(-3px);
+        .footer-section ul li a:hover {
+            color: #00d4ff;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            color: #666;
         }
 
         /* Animations */
@@ -408,60 +514,64 @@
             }
         }
 
-        .fade-in {
-            opacity: 0;
-            animation: fadeInUp 0.8s ease-out forwards;
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
+            .nav-container {
+                padding: 0 1rem;
             }
 
-            .mobile-menu {
-                display: flex;
+            .nav-links {
+                display: none;
             }
 
             .hero h1 {
                 font-size: 2.5rem;
             }
 
-            .hero p {
-                font-size: 1.1rem;
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
             }
 
             .about-content,
-            .contact-content {
+            .polo-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
 
-            .section {
-                padding: 3rem 1rem;
+            .section-title {
+                font-size: 2rem;
             }
 
-            .highlights {
-                grid-template-columns: 1fr;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
+            .container {
+                padding: 0 1rem;
             }
         }
 
-        /* Page transitions */
-        .page {
-            display: none;
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
         }
 
-        .page.active {
-            display: block;
-            animation: fadeInUp 0.5s ease-out;
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -469,434 +579,415 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <a href="#" class="logo" onclick="showPage('home')">DAD</a>
+            <a href="#home" class="logo">
+                <span>⚡</span>
+                Aethernova
+            </a>
             <ul class="nav-links">
-                <li><a href="#" onclick="showPage('home')">Home</a></li>
-                <li><a href="#" onclick="showPage('about')">About</a></li>
-                <li><a href="#" onclick="showPage('projects')">Projects</a></li>
-                <li><a href="#" onclick="showPage('services')">Services</a></li>
-                <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#polo">POLO</a></li>
+                <li><a href="#investor">Investors</a></li>
+                <li><a href="#careers">Careers</a></li>
+                <li><a href="#contact" class="cta-nav">Contact</a></li>
             </ul>
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
         </div>
     </nav>
 
-    <!-- Home Page -->
-    <div id="home" class="page active">
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Deukaa Architects & Developers</h1>
-                <p>Design rooted in nature, sustainability, creativity, and culture</p>
-                <a href="#" class="cta-button" onclick="showPage('projects')">Explore Our Work</a>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Building the Technologies of Tomorrow</h1>
+            <p class="hero-subtitle">Engineering Intelligence. Enabling Tomorrow.</p>
+            <p style="color: #aaa; margin-bottom: 2rem; font-size: 1.1rem;">
+                Visionary technology company creating AI-powered solutions across multiple sectors — from educational robotics to intelligent automation systems.
+            </p>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn btn-primary">Explore Our Projects</a>
+                <a href="#investor" class="btn btn-secondary">Join the Mission</a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Highlights Section -->
-        <section class="section">
-            <h2>Building Dreams, Crafting Futures</h2>
-            <div class="highlights">
-                <div class="highlight-card fade-in">
-                    <div class="highlight-number">15+</div>
-                    <div class="highlight-text">Years of Experience</div>
-                </div>
-                <div class="highlight-card fade-in">
-                    <div class="highlight-number">50+</div>
-                    <div class="highlight-text">Projects Completed</div>
-                </div>
-                <div class="highlight-card fade-in">
-                    <div class="highlight-number">5</div>
-                    <div class="highlight-text">Design Specialties</div>
-                </div>
-                <div class="highlight-card fade-in">
-                    <div class="highlight-number">100%</div>
-                    <div class="highlight-text">Sustainable Approach</div>
-                </div>
-            </div>
-            
-            <div style="text-align: center; margin: 3rem 0;">
-                <p style="font-size: 1.2rem; line-height: 1.8; max-width: 800px; margin: 0 auto;">
-                    We specialize in Architecture, Interiors, Landscape Design, Sustainable Construction, and Community Projects. 
-                    Each project is a harmonious blend of functionality, aesthetics, and environmental consciousness.
-                </p>
-            </div>
-        </section>
-    </div>
-
-    <!-- About Page -->
-    <div id="about" class="page">
-        <section class="section" style="margin-top: 100px;">
-            <h2>About Deukaa</h2>
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="container">
+            <h2 class="section-title fade-in">About Aethernova</h2>
             <div class="about-content">
-                <div class="about-text">
-                    <h3 style="color: var(--earth-brown); margin-bottom: 1rem; font-size: 1.5rem;">The Story Behind DEUKAA</h3>
-                    <p style="margin-bottom: 1.5rem;">
-                        'Deukaa' represents our deep connection to nature and traditional wisdom. The name reflects our philosophy of creating spaces that breathe with the environment, honoring both modern needs and timeless principles of sustainable design.
-                    </p>
-                    <p style="margin-bottom: 1.5rem;">
-                        Founded with a vision to revolutionize architecture through eco-conscious design, we believe that every structure should enhance rather than exploit its natural surroundings. Our approach combines traditional building techniques with contemporary innovation.
-                    </p>
-                    <h3 style="color: var(--earth-brown); margin-bottom: 1rem; font-size: 1.5rem;">Our Design Philosophy</h3>
+                <div class="about-text fade-in">
                     <p>
-                        We create spaces that tell stories - of the land they inhabit, the people who will call them home, and the future they help build. Every project is an opportunity to demonstrate that beautiful design and environmental responsibility are not just compatible, but inseparable.
+                        Aethernova Technologies Pvt Ltd is a visionary technology company building the future across multiple sectors — from AI and robotics to intelligent systems, automation, and deep-tech innovation.
+                    </p>
+                    <p>
+                        Founded with a mission to invent beyond boundaries, Aethernova is committed to creating meaningful, human-centric technologies that transform industries and improve lives.
+                    </p>
+                    <p>
+                        We are the creators of <strong style="color: #00d4ff;">POLO</strong>, the revolutionary AI-powered educational robot — just one of our many future-forward projects aimed at reshaping how people learn, work, and connect with technology.
                     </p>
                 </div>
-                <div class="about-image" style="background: linear-gradient(45deg, var(--sage-green), var(--terracotta)); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
-                    [Founder/Team Photo]
-                </div>
-            </div>
-            
-            <div style="margin-top: 4rem;">
-                <h3 style="color: var(--earth-brown); margin-bottom: 2rem; font-size: 2rem; text-align: center;">Our Core Beliefs</h3>
-                <div class="highlights">
-                    <div class="highlight-card">
-                        <h4 style="color: var(--sage-green); margin-bottom: 1rem;">Sustainability First</h4>
-                        <p>Every design decision considers environmental impact and long-term sustainability.</p>
+                <div class="about-features fade-in">
+                    <div class="feature-item">
+                        <h3>🧠 AI-Driven Product Development</h3>
+                        <p>Advanced artificial intelligence solutions for real-world applications</p>
                     </div>
-                    <div class="highlight-card">
-                        <h4 style="color: var(--sage-green); margin-bottom: 1rem;">Cultural Integration</h4>
-                        <p>Honoring local traditions and materials while embracing contemporary innovation.</p>
+                    <div class="feature-item">
+                        <h3>🤖 Smart Robotics & Automation</h3>
+                        <p>Intelligent robotic systems that enhance human capabilities</p>
                     </div>
-                    <div class="highlight-card">
-                        <h4 style="color: var(--sage-green); margin-bottom: 1rem;">Natural Harmony</h4>
-                        <p>Creating spaces that enhance and celebrate their natural surroundings.</p>
+                    <div class="feature-item">
+                        <h3>☁️ Cloud-Connected Intelligent Systems</h3>
+                        <p>Seamlessly integrated cloud-based intelligent platforms</p>
                     </div>
-                    <div class="highlight-card">
-                        <h4 style="color: var(--sage-green); margin-bottom: 1rem;">Human-Centered</h4>
-                        <p>Designing for the wellbeing and comfort of those who inhabit our spaces.</p>
+                    <div class="feature-item">
+                        <h3>🗣️ Voice & Vision-Based Interaction</h3>
+                        <p>Natural human-computer interaction through voice and vision</p>
                     </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- Projects Page -->
-    <div id="projects" class="page">
-        <section class="section" style="margin-top: 100px;">
-            <h2>Our Portfolio</h2>
-            
-            <!-- Project Categories -->
-            <div style="text-align: center; margin-bottom: 3rem;">
-                <button class="cta-button" style="margin: 0.5rem;" onclick="filterProjects('all')">All Projects</button>
-                <button class="cta-button" style="margin: 0.5rem; background: var(--terracotta);" onclick="filterProjects('architecture')">Architecture</button>
-                <button class="cta-button" style="margin: 0.5rem; background: var(--terracotta);" onclick="filterProjects('interiors')">Interiors</button>
-                <button class="cta-button" style="margin: 0.5rem; background: var(--terracotta);" onclick="filterProjects('landscape')">Landscape</button>
-                <button class="cta-button" style="margin: 0.5rem; background: var(--terracotta);" onclick="filterProjects('community')">Community</button>
-            </div>
-
-            <div class="projects-grid" id="projectsGrid">
-                <div class="project-card" data-category="architecture">
-                    <div class="project-image" style="background: linear-gradient(45deg, var(--sage-green), var(--earth-brown)); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.1rem;">
-                        Sustainable Residence
+                    <div class="feature-item">
+                        <h3>🔒 Security & Confidential AI Frameworks</h3>
+                        <p>Privacy-preserving AI systems with enterprise-grade security</p>
                     </div>
-                    <div class="project-info">
-                        <div class="project-title">Eco-Modern Family Home</div>
-                        <div class="project-details">2023 • Guwahati, Assam</div>
-                        <p class="project-description">A contemporary family residence that seamlessly integrates with its natural landscape, featuring bamboo construction and passive cooling systems.</p>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="interiors">
-                    <div class="project-image" style="background: linear-gradient(45deg, var(--terracotta), var(--sage-green)); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.1rem;">
-                        Cultural Center Interior
-                    </div>
-                    <div class="project-info">
-                        <div class="project-title">Heritage Cultural Center</div>
-                        <div class="project-details">2023 • Jorhat, Assam</div>
-                        <p class="project-description">Interior spaces that celebrate local craftsmanship and traditional art forms while providing modern functionality for community gatherings.</p>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="landscape">
-                    <div class="project-image" style="background: linear-gradient(45deg, var(--sage-green), var(--terracotta)); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.1rem;">
-                        Urban Garden Design
-                    </div>
-                    <div class="project-info">
-                        <div class="project-title">Healing Garden Retreat</div>
-                        <div class="project-details">2022 • Dibrugarh, Assam</div>
-                        <p class="project-description">A therapeutic landscape design that incorporates native plants and meditation spaces for community wellness programs.</p>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="architecture">
-                    <div class="project-image" style="background: linear-gradient(45deg, var(--earth-brown), var(--sage-green)); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.1rem;">
-                        Bamboo Pavilion
-                    </div>
-                    <div class="project-info">
-                        <div class="project-title">Community Bamboo Pavilion</div>
-                        <div class="project-details">2022 • Tezpur, Assam</div>
-                        <p class="project-description">An innovative bamboo structure showcasing traditional building techniques adapted for contemporary community use.</p>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="community">
-                    <div class="project-image" style="background: linear-gradient(45deg, var(--terracotta), var(--earth-brown)); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.1rem;">
-                        School Renovation
-                    </div>
-                    <div class="project-info">
-                        <div class="project-title">Rural School Transformation</div>
-                        <div class="project-details">2021 • Sivasagar, Assam</div>
-                        <p class="project-description">Complete renovation of a rural school using sustainable materials and designs that inspire learning and creativity.</p>
-                    </div>
-                </div>
-
-                <div class="project-card" data-category="interiors">
-                    <div class="project-image" style="background: linear-gradient(45deg, var(--sage-green), var(--terracotta)); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.1rem;">
-                        Artisan Workshop
-                    </div>
-                    <div class="project-info">
-                        <div class="project-title">Traditional Craft Workshop</div>
-                        <div class="project-details">2021 • Majuli, Assam</div>
-                        <p class="project-description">Workshop spaces designed to preserve and promote traditional Assamese crafts with modern amenities for artisan comfort.</p>
+                    <div class="feature-item">
+                        <h3>🌐 IoT-Integrated Devices</h3>
+                        <p>Connected devices that form intelligent ecosystems</p>
                     </div>
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
 
-    <!-- Services Page -->
-    <div id="services" class="page">
-        <section class="section" style="margin-top: 100px;">
-            <h2>Our Services</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-title">Planning & Conceptual Design</div>
-                    <p>Comprehensive planning services that align your vision with sustainable design principles. We create conceptual frameworks that balance functionality, aesthetics, and environmental responsibility.</p>
+    <!-- Projects Section -->
+    <section id="projects" class="section projects">
+        <div class="container">
+            <h2 class="section-title fade-in">Our Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card fade-in">
+                    <div class="project-icon">🎓</div>
+                    <h3>POLO: AI Educational Robot</h3>
+                    <p>India's first AI-powered educational companion for students. Revolutionizing education with empathy-driven AI, real-time learning interaction, and secure cloud integration.</p>
+                    <a href="#polo" class="btn btn-primary">Learn More</a>
                 </div>
-
-                <div class="service-card">
-                    <div class="service-title">Residential & Commercial Architecture</div>
-                    <p>Custom architectural solutions for homes and commercial spaces that reflect your unique needs while harmonizing with the natural environment.</p>
+                <div class="project-card fade-in">
+                    <div class="project-icon">🔬</div>
+                    <h3>Advanced R&D Division</h3>
+                    <p>Cutting-edge research in AI, machine learning, and robotics. Developing next-generation technologies that will shape the future of human-machine interaction.</p>
+                    <a href="#contact" class="btn btn-secondary">Coming Soon</a>
                 </div>
-
-                <div class="service-card">
-                    <div class="service-title">Renovation & Retrofitting</div>
-                    <p>Breathing new life into existing structures through thoughtful renovation and sustainable retrofitting practices that enhance both function and efficiency.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-title">Interior Design</div>
-                    <p>Interior spaces that tell your story through carefully curated materials, colors, and layouts that promote wellbeing and reflect cultural heritage.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-title">Sustainable Design & Bamboo Architecture</div>
-                    <p>Specialized expertise in bamboo construction and eco-friendly building techniques that minimize environmental impact while maximizing aesthetic appeal.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-title">Project Management</div>
-                    <p>End-to-end project management ensuring smooth execution from concept to completion, maintaining quality standards and sustainable practices throughout.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-title">Landscape & Outdoor Design</div>
-                    <p>Landscape architecture that creates seamless transitions between built and natural environments, incorporating native plants and sustainable water management.</p>
+                <div class="project-card fade-in">
+                    <div class="project-icon">🚀</div>
+                    <h3>Future Innovation Lab</h3>
+                    <p>Exploring breakthrough technologies in quantum computing, neural interfaces, and autonomous systems. Where today's dreams become tomorrow's reality.</p>
+                    <a href="#contact" class="btn btn-secondary">Stay Tuned</a>
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
 
-    <!-- Contact Page -->
-    <div id="contact" class="page">
-        <section class="section" style="margin-top: 100px;">
-            <h2>Get In Touch</h2>
-            <div class="contact-content">
-                <div class="contact-form">
-                    <h3 style="color: var(--earth-brown); margin-bottom: 2rem;">Start Your Project</h3>
-                    <form>
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
+    <!-- POLO Spotlight Section -->
+    <section id="polo" class="section polo-spotlight">
+        <div class="container">
+            <h2 class="section-title fade-in">Meet POLO: The Future of Educational Robotics</h2>
+            <div class="polo-content">
+                <div class="polo-features fade-in">
+                    <h3 style="color: #00d4ff; font-size: 1.8rem; margin-bottom: 2rem;">
+                        India's first AI-powered educational companion
+                    </h3>
+                    <div class="polo-feature">
+                        <div class="polo-feature-icon">🧠</div>
+                        <div>
+                            <strong>AI-Powered Knowledge Assistant</strong>
+                            <p style="color: #ccc; margin: 0; font-size: 0.9rem;">Advanced AI that adapts to each student's learning style</p>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="polo-feature">
+                        <div class="polo-feature-icon">📺</div>
+                        <div>
+                            <strong>Real-Time Visual Display</strong>
+                            <p style="color: #ccc; margin: 0; font-size: 0.9rem;">7" interactive screen for visual learning</p>
                         </div>
-                        <div class="form-group">
-                            <label for="project">Project Type</label>
-                            <select id="project" name="project" style="width: 100%; padding: 1rem; border: 2px solid transparent; border-radius: 8px; background: white; font-size: 1rem;">
-                                <option>Residential Architecture</option>
-                                <option>Commercial Architecture</option>
-                                <option>Interior Design</option>
-                                <option>Landscape Design</option>
-                                <option>Renovation</option>
-                                <option>Consultation</option>
-                            </select>
+                    </div>
+                    <div class="polo-feature">
+                        <div class="polo-feature-icon">🎤</div>
+                        <div>
+                            <strong>Voice Command & Control</strong>
+                            <p style="color: #ccc; margin: 0; font-size: 0.9rem;">Natural voice interaction with multilingual support</p>
                         </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" placeholder="Tell us about your project vision..."></textarea>
+                    </div>
+                    <div class="polo-feature">
+                        <div class="polo-feature-icon">☁️</div>
+                        <div>
+                            <strong>Cloud-Connected Learning</strong>
+                            <p style="color: #ccc; margin: 0; font-size: 0.9rem;">Always updated with latest educational content</p>
                         </div>
-                        <button type="submit" class="submit-btn">Send Message</button>
+                    </div>
+                    <div class="polo-feature">
+                        <div class="polo-feature-icon">👁️</div>
+                        <div>
+                            <strong>Camera-Based Recognition</strong>
+                            <p style="color: #ccc; margin: 0; font-size: 0.9rem;">Object and face recognition for personalized experience</p>
+                        </div>
+                    </div>
+                    <div class="polo-feature">
+                        <div class="polo-feature-icon">🔒</div>
+                        <div>
+                            <strong>Privacy-Preserving Security</strong>
+                            <p style="color: #ccc; margin: 0; font-size: 0.9rem;">Voice identity verification with enterprise-grade security</p>
+                        </div>
+                    </div>
+                    <div style="margin-top: 2rem;">
+                        <a href="#investor" class="btn btn-primary" style="margin-right: 1rem;">Watch Demo</a>
+                        <a href="#contact" class="btn btn-secondary">Book a Meeting</a>
+                    </div>
+                </div>
+                <div class="polo-visual fade-in">
+                    <h3>POLO Robot Visualization</h3>
+                    <div style="width: 300px; height: 400px; margin: 2rem auto; background: linear-gradient(135deg, #00d4ff, #0099cc); border-radius: 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: 20px; left: 20px; right: 20px; height: 120px; background: #000; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                            7" Display
+                        </div>
+                        <div style="position: absolute; top: 160px; left: 50%; transform: translateX(-50%); width: 60px; height: 60px; background: #000; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                            👁️
+                        </div>
+                        <div style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); text-align: center;">
+                            <div style="color: #000; font-weight: bold;">POLO</div>
+                            <div style="color: #000; font-size: 0.8rem;">AI Educational Robot</div>
+                        </div>
+                    </div>
+                    <p style="color: #ccc; font-style: italic;">*3D render and internal component design coming soon</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investor Section -->
+    <section id="investor" class="section investor">
+        <div class="container">
+            <h2 class="section-title fade-in">Why Aethernova Is Built for the Long Run</h2>
+            <div class="investor-grid">
+                <div class="investor-card fade-in">
+                    <div class="investor-number">$10B+</div>
+                    <div class="investor-label">India's EdTech Market by 2027</div>
+                </div>
+                <div class="investor-card fade-in">
+                    <div class="investor-number">1st</div>
+                    <div class="investor-label">Mover Advantage in School Robotics</div>
+                </div>
+                <div class="investor-card fade-in">
+                    <div class="investor-number">Multi</div>
+                    <div class="investor-label">Revenue Streams (Hardware + Software)</div>
+                </div>
+                <div class="investor-card fade-in">
+                    <div class="investor-number">Scalable</div>
+                    <div class="investor-label">Product Roadmap</div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="#contact" class="btn btn-primary" style="margin-right: 1rem;">Download Pitch Deck</a>
+                <a href="#contact" class="btn btn-secondary" style="margin-right: 1rem;">Request Financials</a>
+                <a href="#contact" class="btn btn-secondary">Schedule Investor Call</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Careers Section -->
+    <section id="careers" class="section careers">
+        <div class="container">
+            <h2 class="section-title fade-in">Join Our Mission</h2>
+            <p style="text-align: center; color: #ccc; font-size: 1.2rem; margin-bottom: 3rem;">
+                Be part of the team that's shaping the future of technology
+            </p>
+            <div class="careers-grid">
+                <div class="career-card fade-in">
+                    <h3>AI Engineer</h3>
+                    <p>Develop cutting-edge AI algorithms and machine learning models</p>
+                </div>
+                <div class="career-card fade-in">
+                    <h3>Robotics Developer</h3>
+                    <p>Design and build the next generation of intelligent robots</p>
+                </div>
+                <div class="career-card fade-in">
+                    <h3>Full-stack Developer</h3>
+                    <p>Build scalable web applications and cloud infrastructure</p>
+                </div>
+                <div class="career-card fade-in">
+                    <h3>Visual Designer</h3>
+                    <p>Create stunning user experiences and product designs</p>
+                </div>
+                <div class="career-card fade-in">
+                    <h3>Software Development</h3>
+                    <p>Develop robust software solutions for complex problems</p>
+                </div>
+                <div class="career-card fade-in">
+                    <h3>Hardware Engineer</h3>
+                    <p>Design innovative hardware systems and embedded solutions</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="#contact" class="btn btn-primary">View Open Positions</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section about">
+        <div class="container">
+            <h2 class="section-title fade-in">Get In Touch</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; margin-top: 3rem;">
+                <div class="fade-in">
+                    <h3 style="color: #00d4ff; margin-bottom: 2rem;">Contact Options</h3>
+                    <div style="display: grid; gap: 1rem;">
+                        <a href="#" class="btn btn-primary">📅 Book a Demo</a>
+                        <a href="#" class="btn btn-secondary">🤝 Become a Partner</a>
+                        <a href="#" class="btn btn-secondary">💼 Join the Team</a>
+                        <a href="#" class="btn btn-secondary">💰 Invest Now</a>
+                    </div>
+                </div>
+                <div class="fade-in">
+                    <h3 style="color: #00d4ff; margin-bottom: 2rem;">Send us a Message</h3>
+                    <form style="display: grid; gap: 1rem;">
+                        <input type="text" placeholder="Your Name" style="padding: 1rem; border: 1px solid #333; background: rgba(255,255,255,0.1); color: white; border-radius: 8px;">
+                        <input type="email" placeholder="Your Email" style="padding: 1rem; border: 1px solid #333; background: rgba(255,255,255,0.1); color: white; border-radius: 8px;">
+                        <input type="text" placeholder="Company (Optional)" style="padding: 1rem; border: 1px solid #333; background: rgba(255,255,255,0.1); color: white; border-radius: 8px;">
+                        <textarea placeholder="Your Message" rows="4" style="padding: 1rem; border: 1px solid #333; background: rgba(255,255,255,0.1); color: white; border-radius: 8px; resize: vertical;"></textarea>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
                     </form>
                 </div>
-
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <h4>Office Address</h4>
-                        <p>123 Design Street<br>
-                        Guwahati, Assam 781001<br>
-                        India</p>
-                    </div>
-
-                    <div class="contact-item">
-                        <h4>Contact Details</h4>
-                        <p>Email: hello@dadarchitects.com<br>
-                        Phone: +91 98765 43210<br>
-                        WhatsApp: +91 98765 43210</p>
-                    </div>
-
-                    <div class="contact-item">
-                        <h4>Office Hours</h4>
-                        <p>Monday - Friday: 9:00 AM - 6:00 PM<br>
-                        Saturday: 10:00 AM - 4:00 PM<br>
-                        Sunday: By Appointment</p>
-                    </div>
-
-                    <div class="contact-item">
-                        <h4>Collaborate With Us</h4>
-                        <p>We welcome collaborations with artisans, interns, and fellow designers. Send us your portfolio and let's create something beautiful together.</p>
-                        <a href="#" class="cta-button" style="display: inline-block; margin-top: 1rem; padding: 0.8rem 1.5rem; font-size: 0.9rem;">Join Our Team</a>
-                    </div>
-                </div>
             </div>
-
-            <!-- Map placeholder -->
-            <div style="margin-top: 3rem; height: 300px; background: var(--warm-beige); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: var(--stone-gray); font-size: 1.1rem;">
-                [Google Maps Integration - Guwahati Office Location]
-            </div>
-        </section>
-    </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
-        <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
-            <h3 style="margin-bottom: 1rem;">DAD - Deukaa Architects & Developers</h3>
-            <p style="margin-bottom: 2rem; opacity: 0.8;">Design rooted in nature, sustainability, creativity, and culture</p>
-            
-            <div class="social-links">
-                <a href="#" title="Instagram">📷</a>
-                <a href="#" title="Facebook">📘</a>
-                <a href="#" title="YouTube">📺</a>
-                <a href="#" title="WhatsApp">💬</a>
-                <a href="#" title="LinkedIn">💼</a>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Aethernova Technologies</h3>
+                    <p style="color: #ccc; margin-bottom: 1rem;">Engineering Intelligence. Enabling Tomorrow.</p>
+                    <p style="color: #666; font-size: 0.9rem;">Building the future across AI, robotics, and intelligent systems.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#polo">POLO Robot</a></li>
+                        <li><a href="#investor">Investors</a></li>
+                        <li><a href="#careers">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Products</h3>
+                    <ul>
+                        <li><a href="#polo">POLO: AI Educational Robot</a></li>
+                        <li><a href="#projects">AI-Driven Development</a></li>
+                        <li><a href="#projects">Smart Robotics</a></li>
+                        <li><a href="#projects">Cloud Systems</a></li>
+                        <li><a href="#projects">IoT Solutions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#">Press Kit</a></li>
+                    </ul>
+                </div>
             </div>
-            
-            <div style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 2rem; margin-top: 2rem;">
-                <p>&copy; 2025 DAD - Deukaa Architects & Developers. All rights reserved.</p>
-                <p style="margin-top: 0.5rem; opacity: 0.7;">Building sustainable futures, one project at a time.</p>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Aethernova Technologies Pvt Ltd. All rights reserved. | 
+                   <a href="#" style="color: #00d4ff;">Privacy Policy</a> | 
+                   <a href="#" style="color: #00d4ff;">Terms of Service</a>
+                </p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Page Navigation
-        function showPage(pageId) {
-            // Hide all pages
-            const pages = document.querySelectorAll('.page');
-            pages.forEach(page => {
-                page.classList.remove('active');
-            });
-            
-            // Show selected page
-            document.getElementById(pageId).classList.add('active');
-            
-            // Update active nav link
-            const navLinks = document.querySelectorAll('.nav-links a');
-            navLinks.forEach(link => {
-                link.style.color = 'var(--deep-forest)';
-            });
-            
-            // Scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Project Filtering
-        function filterProjects(category) {
-            const projects = document.querySelectorAll('.project-card');
-            
-            projects.forEach(project => {
-                if (category === 'all' || project.dataset.category === category) {
-                    project.style.display = 'block';
-                    project.style.animation = 'fadeInUp 0.5s ease-out';
-                } else {
-                    project.style.display = 'none';
-                }
-            });
-        }
-
-        // Smooth scrolling and animations
-        window.addEventListener('scroll', () => {
-            const fadeElements = document.querySelectorAll('.fade-in');
-            fadeElements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
-                
-                if (elementTop < window.innerHeight - elementVisible) {
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
             });
         });
 
-        // Mobile menu toggle
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-        });
-
-        // Form submission
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-            
-            // Simple validation
-            if (!data.name || !data.email || !data.message) {
-                alert('Please fill in all required fields.');
-                return;
-            }
-            
-            // Simulate form submission
-            alert('Thank you for your message! We will get back to you within 24 hours.');
-            this.reset();
-        });
-
-        // Initialize animations
-        document.addEventListener('DOMContentLoaded', function() {
-            // Trigger initial animations
-            setTimeout(() => {
-                const fadeElements = document.querySelectorAll('.fade-in');
-                fadeElements.forEach((element, index) => {
-                    setTimeout(() => {
-                        element.style.opacity = '1';
-                        element.style.transform = 'translateY(0)';
-                    }, index * 200);
-                });
-            }, 500);
-        });
-
-        // Navbar background change on scroll
-        window.addEventListener('scroll', () => {
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
             const nav = document.querySelector('nav');
             if (window.scrollY > 100) {
-                nav.style.background = 'rgba(255, 255, 255, 0.98)';
-                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+                nav.style.background = 'rgba(10, 10, 10, 0.98)';
+                nav.style.boxShadow = '0 2px 20px rgba(0, 212, 255, 0.1)';
             } else {
-                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+                nav.style.background = 'rgba(10, 10, 10, 0.95)';
                 nav.style.boxShadow = 'none';
             }
         });
 
-        // Project card hover effects
-        document.querySelectorAll('.project-card').forEach(card => {
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission handler
+        const form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const formData = new FormData(this);
+                const name = this.querySelector('input[placeholder="Your Name"]').value;
+                const email = this.querySelector('input[placeholder="Your Email"]').value;
+                const company = this.querySelector('input[placeholder="Company (Optional)"]').value;
+                const message = this.querySelector('textarea').value;
+                
+                // Simple validation
+                if (!name || !email || !message) {
+                    alert('Please fill in all required fields.');
+                    return;
+                }
+                
+                // Simulate form submission
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = 'Sending...';
+                submitBtn.disabled = true;
+                
+                setTimeout(() => {
+                    alert('Thank you for your message! We will get back to you soon.');
+                    this.reset();
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }, 2000);
+            });
+        }
+
+        // Add some interactive effects
+        document.querySelectorAll('.project-card, .investor-card, .career-card').forEach(card => {
             card.addEventListener('mouseenter', function() {
                 this.style.transform = 'translateY(-10px) scale(1.02)';
             });
@@ -906,31 +997,19 @@
             });
         });
 
-        // Highlight cards animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
+        // POLO feature interactions
+        document.querySelectorAll('.polo-feature').forEach(feature => {
+            feature.addEventListener('click', function() {
+                // Add a pulse effect
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 150);
             });
-        }, observerOptions);
-
-        // Observe all highlight cards
-        document.querySelectorAll('.highlight-card, .service-card, .project-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(card);
         });
 
-        // Typing effect for hero text (optional enhancement)
-        function typeWriter(element, text, speed = 100) {
+        // Add typing effect to hero title
+        function typeWriter(element, text, speed = 50) {
             let i = 0;
             element.innerHTML = '';
             
@@ -941,67 +1020,36 @@
                     setTimeout(type, speed);
                 }
             }
+            
             type();
         }
 
-        // Enhanced mobile responsiveness
-        function checkMobile() {
-            if (window.innerWidth <= 768) {
-                // Adjust animations for mobile
-                document.querySelectorAll('.highlight-card').forEach(card => {
-                    card.style.animation = 'fadeInUp 0.4s ease-out';
-                });
-                
-                // Simplify hover effects on mobile
-                document.querySelectorAll('.project-card').forEach(card => {
-                    card.addEventListener('touchstart', function() {
-                        this.style.transform = 'scale(0.98)';
-                    });
-                    
-                    card.addEventListener('touchend', function() {
-                        this.style.transform = 'scale(1)';
-                    });
-                });
+        // Initialize typing effect when page loads
+        window.addEventListener('load', function() {
+            const heroTitle = document.querySelector('.hero h1');
+            if (heroTitle) {
+                const originalText = heroTitle.textContent;
+                setTimeout(() => {
+                    typeWriter(heroTitle, originalText, 100);
+                }, 500);
             }
-        }
+        });
 
-        window.addEventListener('resize', checkMobile);
-        checkMobile();
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
 
-        // Smooth section transitions
-        function smoothTransition(targetSection) {
-            const currentSection = document.querySelector('.page.active');
-            currentSection.style.opacity = '0';
-            
-            setTimeout(() => {
-                showPage(targetSection);
-                const newSection = document.querySelector('.page.active');
-                newSection.style.opacity = '1';
-            }, 200);
-        }
-
-        // Add loading animation
-        window.addEventListener('load', () => {
-            const loader = document.createElement('div');
-            loader.style.cssText = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: var(--soft-white);
-                z-index: 9999;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                transition: opacity 0.5s ease;
-            `;
-            loader.innerHTML = '<div style="font-size: 2rem; color: var(--earth-brown);">DAD</div>';
-            
-            setTimeout(() => {
-                loader.style.opacity = '0';
-                setTimeout(() => loader.remove(), 500);
-            }, 1000);
+        // Button click tracking (for analytics)
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                console.log(`Button clicked: ${this.textContent.trim()}`);
+                // Here you would integrate with your analytics service
+            });
         });
     </script>
 </body>
