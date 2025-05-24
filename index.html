@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAD - Deukaa Architects & Developers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --earth-brown: #8B4513;
+            --sage-green: #87A96B;
+            --warm-beige: #F5F5DC;
+            --deep-forest: #2F4F2F;
+            --soft-white: #FEFEFE;
+            --terracotta: #CD853F;
+            --stone-gray: #696969;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: var(--deep-forest);
+            background-color: var(--soft-white);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--earth-brown);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--deep-forest);
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--sage-green);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--earth-brown);
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23F5F5DC" width="1200" height="800"/><path fill="%2387A96B" opacity="0.1" d="M0,400 Q300,200 600,400 T1200,400 V800 H0 Z"/><circle fill="%238B4513" opacity="0.1" cx="200" cy="150" r="50"/><circle fill="%23CD853F" opacity="0.1" cx="1000" cy="200" r="80"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--sage-green);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .cta-button:hover {
+            background: var(--earth-brown);
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--earth-brown);
+            font-weight: 300;
+        }
+
+        /* Highlights Grid */
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .highlight-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--warm-beige);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .highlight-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--sage-green);
+            margin-bottom: 1rem;
+        }
+
+        .highlight-text {
+            font-size: 1.1rem;
+            color: var(--deep-forest);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin: 3rem 0;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 400px;
+            background: var(--sage-green);
+            border-radius: 10px;
+            opacity: 0.7;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(45deg, var(--sage-green), var(--terracotta));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--earth-brown);
+        }
+
+        .project-details {
+            color: var(--stone-gray);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .project-description {
+            line-height: 1.6;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .service-card {
+            padding: 2rem;
+            background: white;
+            border-left: 4px solid var(--sage-green);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .service-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--earth-brown);
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+
+        .contact-form {
+            background: var(--warm-beige);
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: var(--deep-forest);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            background: white;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--sage-green);
+        }
+
+        .submit-btn {
+            background: var(--earth-brown);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: var(--sage-green);
+            transform: translateY(-2px);
+        }
+
+        .contact-info {
+            padding: 2rem 0;
+        }
+
+        .contact-item {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .contact-item h4 {
+            color: var(--earth-brown);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--deep-forest);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 5rem;
+        }
+
+        .social-links {
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 1rem;
+            padding: 1rem;
+            background: var(--sage-green);
+            color: white;
+            text-decoration: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            line-height: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--terracotta);
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            .highlights {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Page transitions */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+            animation: fadeInUp 0.5s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo" onclick="showPage('home')">DAD</a>
+            <ul class="nav-links">
+                <li><a href="#" onclick="showPage('home')">Home</a></li>
+                <li><a href="#" onclick="showPage('about')">About</a></li>
+                <li><a href="#" onclick="showPage('projects')">Projects</a></li>
+                <li><a href="#" onclick="showPage('services')">Services</a></li>
+                <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home" class="page active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Deukaa Architects & Developers</h1>
+                <p>Design rooted in nature, sustainability, creativity, and culture</p>
+                <a href="#" class="cta-button" onclick="showPage('projects')">Explore Our Work</a>
+            </div>
+        </section>
+
+        <!-- Highlights Section -->
+        <section class="section">
+            <h2>Building Dreams, Crafting Futures</h2>
+            <div class="highlights">
+                <div class="highlight-card fade-in">
+                    <div class="highlight-number">15+</div>
+                    <div class="highlight-text">Years of Experience</div>
+                </div>
+                <div class="highlight-card fade-in">
+                    <div class="highlight-number">50+</div>
+                    <div class="highlight-text">Projects Completed</div>
+                </div>
+                <div class="highlight-card fade-in">
+                    <div class="highlight-number">5</div>
+                    <div class="highlight-text">Design Specialties</div>
+                </div>
+                <div class="highlight-card fade-in">
+                    <div class="highlight-number">100%</div>
+                    <div class="highlight-text">Sustainable Approach</div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin: 3rem 0;">
+                <p style="font-size: 1.2rem; line-height: 1.8; max-width: 800px; margin: 0 auto;">
+                    We specialize in Architecture, Interiors, Landscape Design, Sustainable Construction, and Community Projects. 
+                    Each project is a harmonious blend of functionality, aesthetics, and environmental consciousness.
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <!-- About Page -->
+    <div id="about" class="page">
+        <section class="section" style="margin-top: 100px;">
+            <h2>About Deukaa</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3 style="color: var(--earth-brown); margin-bottom: 1rem; font-size: 1.5rem;">The Story Behind DEUKAA</h3>
+                    <p style="margin-bottom: 1.5rem;">
+                        'Deukaa' represents our deep connection to nature and traditional wisdom. The name reflects our philosophy of creating spaces that breathe with the environment, honoring both modern needs and timeless principles of sustainable design.
+                    </p>
+                    <p style="margin-bottom: 1.5rem;">
+                        Founded with a vision to revolutionize architecture through eco-conscious design, we believe that every structure should enhance rather than exploit its natural surroundings. Our approach combines traditional building techniques with contemporary innovation.
+                    </p>
+                    <h3 style="color: var(--earth-brown); margin-bottom: 1rem; font-size: 1.5rem;">Our Design Philosophy</h3>
+                    <p>
+                        We create spaces that tell stories - of the land they inhabit, the people who will call them home, and the future they help build. Every project is an opportunity to demonstrate that beautiful design and environmental responsibility are not just compatible, but inseparable.
+                    </p>
+                </div>
+                <div class="about-image" style="background: linear-gradient(45deg, var(--sage-green), var(--terracotta)); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
+                    [Founder/Team Photo]
+                </div>
+            </div>
+            
+            <div style="margin-top: 4rem;">
+                <h3 style="color: var(--earth-brown); margin-bottom: 2rem; font-size: 2rem; text-align: center;">Our Core Beliefs</h3>
+                <div class="highlights">
+                    <div class="highlight-card">
+                        <h4 style="color: var(--sage-green); margin-bottom: 1rem;">Sustainability First</h4>
+                        <p>Every design decision considers environmental impact and long-term sustainability.</p>
+                    </div>
+                    <div class="highlight-card">
+                        <h4 style="color: var(--sage-green); margin-bottom: 1rem;">Cultural Integration</h4>
+                        <p>Honoring local traditions and materials while embracing contemporary innovation.</p>
+                    </div>
+                    <div class="highlight-card">
+                        <h4 style="color: var(--sage-green); margin-bottom: 1rem;">Natural Harmony</h4>
+                        <p>Creating spaces that enhance and celebrate their natural surroundings.</p>
+                    </div>
+                    <div class="highlight-card">
+                        <h4 style="color: var(--sage-green); margin-bottom: 1rem;">Human-Centered</h4>
+                        <p>Designing for the wellbeing and comfort of those who inhabit our spaces.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Projects Page -->
+    <div id="projects" class="page">
+        <section class="section" style="margin-top: 100px;">
+            <h2>Our Portfolio</h2>
+            
+            <!-- Project Categories -->
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <button class="cta-button" style="margin: 0.5rem;" onclick="filterProjects('all')">All Projects</button>
+                <button class="cta-button" style="margin: 0.5rem; background: var(--terracotta);" onclick="filterProjects('architecture')">Architecture</button>
+                <button class="cta-button" style="margin: 0.5rem; background: var(--terracotta);" onclick="filterProjects('interiors')">Interiors</button>
+                <button class="cta-button" style="margin: 0.5rem; background: var(--terracotta);" onclick="filterProjects('landscape')">Landscape</button>
+                <button class="cta-button" style="margin: 0.5rem; background: var(--terracotta);" onclick="filterProjects('community')">Community</button>
+            </div>
+
+            <div class="projects-grid" id="projectsGrid">
+                <div class="project-card" data-category="architecture">
+                    <div class="project-image" style="background: linear-gradient(45deg, var(--sage-green), var(--earth-brown)); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.1rem;">
+                        Sustainable Residence
+                    </div>
+                    <div class="project-info">
+                        <div class="project-title">Eco-Modern Family Home</div>
+                        <div class="project-details">2023 • Guwahati, Assam</div>
+                        <p class="project-description">A contemporary family residence that seamlessly integrates with its natural landscape, featuring bamboo construction and passive cooling systems.</p>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="interiors">
+                    <div class="project-image" style="background: linear-gradient(45deg, var(--terracotta), var(--sage-green)); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.1rem;">
+                        Cultural Center Interior
+                    </div>
+                    <div class="project-info">
+                        <div class="project-title">Heritage Cultural Center</div>
+                        <div class="project-details">2023 • Jorhat, Assam</div>
+                        <p class="project-description">Interior spaces that celebrate local craftsmanship and traditional art forms while providing modern functionality for community gatherings.</p>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="landscape">
+                    <div class="project-image" style="background: linear-gradient(45deg, var(--sage-green), var(--terracotta)); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.1rem;">
+                        Urban Garden Design
+                    </div>
+                    <div class="project-info">
+                        <div class="project-title">Healing Garden Retreat</div>
+                        <div class="project-details">2022 • Dibrugarh, Assam</div>
+                        <p class="project-description">A therapeutic landscape design that incorporates native plants and meditation spaces for community wellness programs.</p>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="architecture">
+                    <div class="project-image" style="background: linear-gradient(45deg, var(--earth-brown), var(--sage-green)); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.1rem;">
+                        Bamboo Pavilion
+                    </div>
+                    <div class="project-info">
+                        <div class="project-title">Community Bamboo Pavilion</div>
+                        <div class="project-details">2022 • Tezpur, Assam</div>
+                        <p class="project-description">An innovative bamboo structure showcasing traditional building techniques adapted for contemporary community use.</p>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="community">
+                    <div class="project-image" style="background: linear-gradient(45deg, var(--terracotta), var(--earth-brown)); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.1rem;">
+                        School Renovation
+                    </div>
+                    <div class="project-info">
+                        <div class="project-title">Rural School Transformation</div>
+                        <div class="project-details">2021 • Sivasagar, Assam</div>
+                        <p class="project-description">Complete renovation of a rural school using sustainable materials and designs that inspire learning and creativity.</p>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="interiors">
+                    <div class="project-image" style="background: linear-gradient(45deg, var(--sage-green), var(--terracotta)); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.1rem;">
+                        Artisan Workshop
+                    </div>
+                    <div class="project-info">
+                        <div class="project-title">Traditional Craft Workshop</div>
+                        <div class="project-details">2021 • Majuli, Assam</div>
+                        <p class="project-description">Workshop spaces designed to preserve and promote traditional Assamese crafts with modern amenities for artisan comfort.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Services Page -->
+    <div id="services" class="page">
+        <section class="section" style="margin-top: 100px;">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-title">Planning & Conceptual Design</div>
+                    <p>Comprehensive planning services that align your vision with sustainable design principles. We create conceptual frameworks that balance functionality, aesthetics, and environmental responsibility.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-title">Residential & Commercial Architecture</div>
+                    <p>Custom architectural solutions for homes and commercial spaces that reflect your unique needs while harmonizing with the natural environment.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-title">Renovation & Retrofitting</div>
+                    <p>Breathing new life into existing structures through thoughtful renovation and sustainable retrofitting practices that enhance both function and efficiency.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-title">Interior Design</div>
+                    <p>Interior spaces that tell your story through carefully curated materials, colors, and layouts that promote wellbeing and reflect cultural heritage.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-title">Sustainable Design & Bamboo Architecture</div>
+                    <p>Specialized expertise in bamboo construction and eco-friendly building techniques that minimize environmental impact while maximizing aesthetic appeal.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-title">Project Management</div>
+                    <p>End-to-end project management ensuring smooth execution from concept to completion, maintaining quality standards and sustainable practices throughout.</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-title">Landscape & Outdoor Design</div>
+                    <p>Landscape architecture that creates seamless transitions between built and natural environments, incorporating native plants and sustainable water management.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact" class="page">
+        <section class="section" style="margin-top: 100px;">
+            <h2>Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-form">
+                    <h3 style="color: var(--earth-brown); margin-bottom: 2rem;">Start Your Project</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="project">Project Type</label>
+                            <select id="project" name="project" style="width: 100%; padding: 1rem; border: 2px solid transparent; border-radius: 8px; background: white; font-size: 1rem;">
+                                <option>Residential Architecture</option>
+                                <option>Commercial Architecture</option>
+                                <option>Interior Design</option>
+                                <option>Landscape Design</option>
+                                <option>Renovation</option>
+                                <option>Consultation</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Tell us about your project vision..."></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h4>Office Address</h4>
+                        <p>123 Design Street<br>
+                        Guwahati, Assam 781001<br>
+                        India</p>
+                    </div>
+
+                    <div class="contact-item">
+                        <h4>Contact Details</h4>
+                        <p>Email: hello@dadarchitects.com<br>
+                        Phone: +91 98765 43210<br>
+                        WhatsApp: +91 98765 43210</p>
+                    </div>
+
+                    <div class="contact-item">
+                        <h4>Office Hours</h4>
+                        <p>Monday - Friday: 9:00 AM - 6:00 PM<br>
+                        Saturday: 10:00 AM - 4:00 PM<br>
+                        Sunday: By Appointment</p>
+                    </div>
+
+                    <div class="contact-item">
+                        <h4>Collaborate With Us</h4>
+                        <p>We welcome collaborations with artisans, interns, and fellow designers. Send us your portfolio and let's create something beautiful together.</p>
+                        <a href="#" class="cta-button" style="display: inline-block; margin-top: 1rem; padding: 0.8rem 1.5rem; font-size: 0.9rem;">Join Our Team</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map placeholder -->
+            <div style="margin-top: 3rem; height: 300px; background: var(--warm-beige); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: var(--stone-gray); font-size: 1.1rem;">
+                [Google Maps Integration - Guwahati Office Location]
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+            <h3 style="margin-bottom: 1rem;">DAD - Deukaa Architects & Developers</h3>
+            <p style="margin-bottom: 2rem; opacity: 0.8;">Design rooted in nature, sustainability, creativity, and culture</p>
+            
+            <div class="social-links">
+                <a href="#" title="Instagram">📷</a>
+                <a href="#" title="Facebook">📘</a>
+                <a href="#" title="YouTube">📺</a>
+                <a href="#" title="WhatsApp">💬</a>
+                <a href="#" title="LinkedIn">💼</a>
+            </div>
+            
+            <div style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 2rem; margin-top: 2rem;">
+                <p>&copy; 2025 DAD - Deukaa Architects & Developers. All rights reserved.</p>
+                <p style="margin-top: 0.5rem; opacity: 0.7;">Building sustainable futures, one project at a time.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Page Navigation
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Update active nav link
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => {
+                link.style.color = 'var(--deep-forest)';
+            });
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Project Filtering
+        function filterProjects(category) {
+            const projects = document.querySelectorAll('.project-card');
+            
+            projects.forEach(project => {
+                if (category === 'all' || project.dataset.category === category) {
+                    project.style.display = 'block';
+                    project.style.animation = 'fadeInUp 0.5s ease-out';
+                } else {
+                    project.style.display = 'none';
+                }
+            });
+        }
+
+        // Smooth scrolling and animations
+        window.addEventListener('scroll', () => {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Simple validation
+            if (!data.name || !data.email || !data.message) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Simulate form submission
+            alert('Thank you for your message! We will get back to you within 24 hours.');
+            this.reset();
+        });
+
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Trigger initial animations
+            setTimeout(() => {
+                const fadeElements = document.querySelectorAll('.fade-in');
+                fadeElements.forEach((element, index) => {
+                    setTimeout(() => {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
+                    }, index * 200);
+                });
+            }, 500);
+        });
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(255, 255, 255, 0.98)';
+                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+                nav.style.boxShadow = 'none';
+            }
+        });
+
+        // Project card hover effects
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Highlight cards animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all highlight cards
+        document.querySelectorAll('.highlight-card, .service-card, .project-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Typing effect for hero text (optional enhancement)
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Enhanced mobile responsiveness
+        function checkMobile() {
+            if (window.innerWidth <= 768) {
+                // Adjust animations for mobile
+                document.querySelectorAll('.highlight-card').forEach(card => {
+                    card.style.animation = 'fadeInUp 0.4s ease-out';
+                });
+                
+                // Simplify hover effects on mobile
+                document.querySelectorAll('.project-card').forEach(card => {
+                    card.addEventListener('touchstart', function() {
+                        this.style.transform = 'scale(0.98)';
+                    });
+                    
+                    card.addEventListener('touchend', function() {
+                        this.style.transform = 'scale(1)';
+                    });
+                });
+            }
+        }
+
+        window.addEventListener('resize', checkMobile);
+        checkMobile();
+
+        // Smooth section transitions
+        function smoothTransition(targetSection) {
+            const currentSection = document.querySelector('.page.active');
+            currentSection.style.opacity = '0';
+            
+            setTimeout(() => {
+                showPage(targetSection);
+                const newSection = document.querySelector('.page.active');
+                newSection.style.opacity = '1';
+            }, 200);
+        }
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            const loader = document.createElement('div');
+            loader.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: var(--soft-white);
+                z-index: 9999;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: opacity 0.5s ease;
+            `;
+            loader.innerHTML = '<div style="font-size: 2rem; color: var(--earth-brown);">DAD</div>';
+            
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => loader.remove(), 500);
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
