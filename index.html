@@ -19,6 +19,10 @@
             overflow-x: hidden;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         /* Navigation */
         nav {
             position: fixed;
@@ -53,7 +57,7 @@
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 1.8rem;
             align-items: center;
         }
 
@@ -179,22 +183,9 @@
             transform: translateY(-3px);
         }
 
-        /* Animated Background */
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="grad1" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:%2300d4ff;stop-opacity:0.1"/><stop offset="100%" style="stop-color:%2300d4ff;stop-opacity:0"/></radialGradient></defs><circle cx="200" cy="200" r="3" fill="url(%23grad1)"><animate values="3;6;3" dur="4s" repeatCount="indefinite"/></circle><circle cx="800" cy="300" r="2" fill="url(%23grad1)"><animate values="2;5;2" dur="3s" repeatCount="indefinite"/></circle><circle cx="400" cy="600" r="4" fill="url(%23grad1)"><animate values="4;7;4" dur="5s" repeatCount="indefinite"/></circle></svg>');
-            opacity: 0.3;
-            animation: float 20s ease-in-out infinite;
-        }
-
         /* Sections */
         .section {
-            padding: 5rem 0;
+            padding: 6rem 0;
             position: relative;
         }
 
@@ -208,7 +199,7 @@
             text-align: center;
             font-size: 3rem;
             font-weight: 700;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
             color: white;
             background: linear-gradient(135deg, #fff 0%, #00d4ff 100%);
             -webkit-background-clip: text;
@@ -234,28 +225,61 @@
             line-height: 1.8;
             color: #ccc;
         }
-
-        .about-features {
+        
+        /* Leadership/Team Section */
+        .team-grid {
             display: grid;
-            gap: 1.5rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: flex-start;
         }
 
-        .feature-item {
-            padding: 1.5rem;
-            background: rgba(0, 212, 255, 0.1);
-            border-radius: 15px;
-            border-left: 4px solid #00d4ff;
+        .team-member {
+            text-align: center;
+            background: rgba(0, 212, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.1);
             transition: all 0.3s ease;
+            height: 100%;
         }
 
-        .feature-item:hover {
-            transform: translateX(10px);
-            background: rgba(0, 212, 255, 0.2);
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.15);
         }
 
-        .feature-item h3 {
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: top;
+            margin-bottom: 1.5rem;
+            border: 4px solid #00d4ff;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .team-member h3 {
             color: #00d4ff;
+            font-size: 1.8rem;
             margin-bottom: 0.5rem;
+        }
+
+        .team-member h4 {
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .team-member p {
+            color: #ccc;
+            font-size: 1rem;
+            line-height: 1.7;
+            text-align: left;
         }
 
         /* Projects Section */
@@ -266,7 +290,7 @@
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
             gap: 3rem;
             margin-top: 3rem;
         }
@@ -280,21 +304,13 @@
             border: 1px solid rgba(0, 212, 255, 0.2);
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .project-card:hover::before {
-            left: 100%;
+        
+        .project-card-content {
+            flex-grow: 1;
         }
 
         .project-card:hover {
@@ -311,7 +327,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            font-size: 2.5rem;
         }
 
         .project-card h3 {
@@ -325,27 +341,30 @@
             line-height: 1.6;
             margin-bottom: 2rem;
         }
-
-        /* POLO Spotlight */
-        .polo-spotlight {
-            background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
-            color: white;
-            position: relative;
+        
+        .project-card .btn {
+            margin-top: auto;
         }
 
-        .polo-content {
+        /* POLO & HAYA-IQ Spotlight */
+        .spotlight {
+            background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
+            color: white;
+        }
+
+        .spotlight-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
             align-items: center;
         }
 
-        .polo-features {
+        .spotlight-features {
             display: grid;
             gap: 1rem;
         }
 
-        .polo-feature {
+        .spotlight-feature {
             display: flex;
             align-items: center;
             gap: 1rem;
@@ -355,12 +374,12 @@
             transition: all 0.3s ease;
         }
 
-        .polo-feature:hover {
+        .spotlight-feature:hover {
             background: rgba(0, 212, 255, 0.2);
             transform: translateX(10px);
         }
 
-        .polo-feature-icon {
+        .spotlight-feature-icon {
             width: 40px;
             height: 40px;
             background: #00d4ff;
@@ -370,9 +389,11 @@
             justify-content: center;
             color: white;
             font-weight: bold;
+            font-size: 1.2rem;
+            flex-shrink: 0;
         }
 
-        .polo-visual {
+        .spotlight-visual {
             text-align: center;
             padding: 3rem;
             background: rgba(0, 212, 255, 0.05);
@@ -380,85 +401,12 @@
             border: 2px dashed rgba(0, 212, 255, 0.3);
         }
 
-        .polo-visual h3 {
+        .spotlight-visual h3 {
             color: #00d4ff;
             margin-bottom: 1rem;
         }
-
-        /* Investor Section */
-        .investor {
-            background: #0a0a0a;
-            color: white;
-        }
-
-        .investor-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .investor-card {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .investor-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 212, 255, 0.2);
-        }
-
-        .investor-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #00d4ff;
-            margin-bottom: 0.5rem;
-        }
-
-        .investor-label {
-            color: #ccc;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Careers Section */
-        .careers {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: white;
-        }
-
-        .careers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .career-card {
-            background: rgba(0, 212, 255, 0.1);
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(0, 212, 255, 0.2);
-        }
-
-        .career-card:hover {
-            background: rgba(0, 212, 255, 0.2);
-            transform: translateY(-5px);
-        }
-
-        .career-card h3 {
-            color: #00d4ff;
-            margin-bottom: 1rem;
-        }
-
-        /* Footer */
+        
+        /* Footer, etc. (existing styles remain largely the same) */
         footer {
             background: #000;
             color: white;
@@ -480,7 +428,7 @@
         .footer-section ul {
             list-style: none;
         }
-
+        
         .footer-section ul li {
             margin-bottom: 0.5rem;
         }
@@ -514,19 +462,23 @@
             }
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
         /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content,
+            .spotlight-content,
+            .team-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+        
         @media (max-width: 768px) {
             .nav-container {
                 padding: 0 1rem;
             }
 
             .nav-links {
-                display: none;
+                display: none; /* For simplicity; a hamburger menu would be needed for a real site */
             }
 
             .hero h1 {
@@ -536,37 +488,21 @@
             .hero-subtitle {
                 font-size: 1.2rem;
             }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .about-content,
-            .polo-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
+            
             .section-title {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
-
-            .container {
-                padding: 0 1rem;
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
             }
-        }
-
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
         }
 
         /* Scroll animations */
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.8s ease;
+            transition: all 0.8s ease-out;
         }
 
         .fade-in.visible {
@@ -576,7 +512,6 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav>
         <div class="nav-container">
             <a href="#home" class="logo">
@@ -586,8 +521,8 @@
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="#team">Leadership</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="#polo">POLO</a></li>
                 <li><a href="#investor">Investors</a></li>
                 <li><a href="#careers">Careers</a></li>
                 <li><a href="#contact" class="cta-nav">Contact</a></li>
@@ -595,22 +530,20 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Building the Technologies of Tomorrow</h1>
             <p class="hero-subtitle">Engineering Intelligence. Enabling Tomorrow.</p>
-            <p style="color: #aaa; margin-bottom: 2rem; font-size: 1.1rem;">
-                Visionary technology company creating AI-powered solutions across multiple sectors — from educational robotics to intelligent automation systems.
+            <p style="color: #aaa; margin-bottom: 2rem; font-size: 1.1rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                A visionary technology company creating AI-powered solutions that serve humanity, solve pressing challenges, and inspire positive change across multiple sectors.
             </p>
             <div class="hero-buttons">
-                <a href="#projects" class="btn btn-primary">Explore Our Projects</a>
+                <a href="#projects" class="btn btn-primary">Explore Our Innovations</a>
                 <a href="#investor" class="btn btn-secondary">Join the Mission</a>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
     <section id="about" class="section about">
         <div class="container">
             <h2 class="section-title fade-in">About Aethernova</h2>
@@ -620,243 +553,178 @@
                         Aethernova Technologies Pvt Ltd is a visionary technology company building the future across multiple sectors — from AI and robotics to intelligent systems, automation, and deep-tech innovation.
                     </p>
                     <p>
-                        Founded with a mission to invent beyond boundaries, Aethernova is committed to creating meaningful, human-centric technologies that transform industries and improve lives.
+                        Founded with a mission to invent beyond boundaries, Aethernova is committed to creating meaningful, human-centric technologies that transform industries and improve lives. Our promise is simple: we will always build something useful for humanity.
                     </p>
                     <p>
-                        We are the creators of <strong style="color: #00d4ff;">POLO</strong>, the revolutionary AI-powered educational robot — just one of our many future-forward projects aimed at reshaping how people learn, work, and connect with technology.
+                        We are the creators of <strong style="color: #00d4ff;">POLO</strong>, the revolutionary AI educational robot, and <strong style="color: #00d4ff;">HAYA-IQ</strong>, an advanced AI system for road safety, among other future-forward projects aimed at reshaping how we live, learn, and work.
                     </p>
                 </div>
-                <div class="about-features fade-in">
-                    <div class="feature-item">
-                        <h3>🧠 AI-Driven Product Development</h3>
-                        <p>Advanced artificial intelligence solutions for real-world applications</p>
-                    </div>
-                    <div class="feature-item">
-                        <h3>🤖 Smart Robotics & Automation</h3>
-                        <p>Intelligent robotic systems that enhance human capabilities</p>
-                    </div>
-                    <div class="feature-item">
-                        <h3>☁️ Cloud-Connected Intelligent Systems</h3>
-                        <p>Seamlessly integrated cloud-based intelligent platforms</p>
-                    </div>
-                    <div class="feature-item">
-                        <h3>🗣️ Voice & Vision-Based Interaction</h3>
-                        <p>Natural human-computer interaction through voice and vision</p>
-                    </div>
-                    <div class="feature-item">
-                        <h3>🔒 Security & Confidential AI Frameworks</h3>
-                        <p>Privacy-preserving AI systems with enterprise-grade security</p>
-                    </div>
-                    <div class="feature-item">
-                        <h3>🌐 IoT-Integrated Devices</h3>
-                        <p>Connected devices that form intelligent ecosystems</p>
-                    </div>
+                <div class="about-visual fade-in" style="text-align: center;">
+                    <img src="polo.jpg" alt="POLO Robot" style="max-width: 80%; height: auto; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.3);">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="team" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Meet Our Leadership</h2>
+            <div class="team-grid">
+                <div class="team-member fade-in">
+                    <img src="shlok.jpg" alt="Shlok Khosla, Founder and CEO">
+                    <h3>Shlok Khosla</h3>
+                    <h4>Founder & CEO</h4>
+                    <p>I am Shlok Khosla, a passionate hardware innovator and technology enthusiast, dedicated to transforming ideas into tangible solutions that make a real-world impact. At Aethernova, we approach every project with a vision to blend engineering precision, intelligent design, and purposeful innovation to create products that serve humanity, solve pressing challenges, and inspire positive change.</p>
+                </div>
+                <div class="team-member fade-in">
+                    <img src="p1.jpg" alt="Paulomi Kundu, Director and CTO">
+                    <h3>Paulomi Kundu</h3>
+                    <h4>Director & CTO</h4>
+                    <p>I am Paulomi Kundu, a passionate software developer driven by the challenge of solving complex problems and transforming innovative ideas into efficient, elegant, and scalable code. I lead the development of intelligent, future-ready solutions that not only meet technical requirements but also deliver exceptional user experiences. Every line of code I write is guided by the vision of building technology that empowers people and contributes to a better future.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
     <section id="projects" class="section projects">
         <div class="container">
-            <h2 class="section-title fade-in">Our Projects</h2>
+            <h2 class="section-title fade-in">Our Core Innovations</h2>
             <div class="projects-grid">
                 <div class="project-card fade-in">
-                    <div class="project-icon">🎓</div>
-                    <h3>POLO: AI Educational Robot</h3>
-                    <p>India's first AI-powered educational companion for students. Revolutionizing education with empathy-driven AI, real-time learning interaction, and secure cloud integration.</p>
+                    <div class="project-card-content">
+                        <div class="project-icon">🎓</div>
+                        <h3>POLO: AI Educational Robot</h3>
+                        <p>India's first AI-powered educational companion for students. Revolutionizing education with empathy-driven AI, real-time learning interaction, and secure cloud integration.</p>
+                    </div>
                     <a href="#polo" class="btn btn-primary">Learn More</a>
                 </div>
                 <div class="project-card fade-in">
-                    <div class="project-icon">🔬</div>
-                    <h3>Advanced R&D Division</h3>
-                    <p>Cutting-edge research in AI, machine learning, and robotics. Developing next-generation technologies that will shape the future of human-machine interaction.</p>
-                    <a href="#contact" class="btn btn-secondary">Coming Soon</a>
+                    <div class="project-card-content">
+                        <div class="project-icon">🛡️</div>
+                        <h3>HAYA-IQ: Drunk Driving Prevention</h3>
+                        <p>A life-saving safety device using AI-powered sensors to detect driver alcohol levels in real-time, preventing accidents before they happen and making roads safer for all.</p>
+                    </div>
+                    <a href="#haya-iq" class="btn btn-primary">Learn More</a>
                 </div>
                 <div class="project-card fade-in">
-                    <div class="project-icon">🚀</div>
-                    <h3>Future Innovation Lab</h3>
-                    <p>Exploring breakthrough technologies in quantum computing, neural interfaces, and autonomous systems. Where today's dreams become tomorrow's reality.</p>
+                    <div class="project-card-content">
+                        <div class="project-icon">🚀</div>
+                        <h3>Future Innovation Lab</h3>
+                        <p>Exploring breakthrough technologies in autonomous systems, neural interfaces, and IoT ecosystems. Where today's dreams become tomorrow's reality.</p>
+                    </div>
                     <a href="#contact" class="btn btn-secondary">Stay Tuned</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- POLO Spotlight Section -->
-    <section id="polo" class="section polo-spotlight">
+    <section id="polo" class="section spotlight">
         <div class="container">
             <h2 class="section-title fade-in">Meet POLO: The Future of Educational Robotics</h2>
-            <div class="polo-content">
-                <div class="polo-features fade-in">
+            <div class="spotlight-content">
+                <div class="spotlight-features fade-in">
                     <h3 style="color: #00d4ff; font-size: 1.8rem; margin-bottom: 2rem;">
                         India's first AI-powered educational companion
                     </h3>
-                    <div class="polo-feature">
-                        <div class="polo-feature-icon">🧠</div>
+                    <div class="spotlight-feature">
+                        <div class="spotlight-feature-icon">🧠</div>
                         <div>
                             <strong>AI-Powered Knowledge Assistant</strong>
                             <p style="color: #ccc; margin: 0; font-size: 0.9rem;">Advanced AI that adapts to each student's learning style</p>
                         </div>
                     </div>
-                    <div class="polo-feature">
-                        <div class="polo-feature-icon">📺</div>
+                    <div class="spotlight-feature">
+                        <div class="spotlight-feature-icon">📺</div>
                         <div>
                             <strong>Real-Time Visual Display</strong>
-                            <p style="color: #ccc; margin: 0; font-size: 0.9rem;">7" interactive screen for visual learning</p>
+                            <p style="color: #ccc; margin: 0; font-size: 0.9rem;">Interactive screen for enhanced visual learning</p>
                         </div>
                     </div>
-                    <div class="polo-feature">
-                        <div class="polo-feature-icon">🎤</div>
+                    <div class="spotlight-feature">
+                        <div class="spotlight-feature-icon">🎤</div>
                         <div>
                             <strong>Voice Command & Control</strong>
                             <p style="color: #ccc; margin: 0; font-size: 0.9rem;">Natural voice interaction with multilingual support</p>
                         </div>
                     </div>
-                    <div class="polo-feature">
-                        <div class="polo-feature-icon">☁️</div>
-                        <div>
-                            <strong>Cloud-Connected Learning</strong>
-                            <p style="color: #ccc; margin: 0; font-size: 0.9rem;">Always updated with latest educational content</p>
-                        </div>
-                    </div>
-                    <div class="polo-feature">
-                        <div class="polo-feature-icon">👁️</div>
+                    <div class="spotlight-feature">
+                        <div class="spotlight-feature-icon">👁️</div>
                         <div>
                             <strong>Camera-Based Recognition</strong>
-                            <p style="color: #ccc; margin: 0; font-size: 0.9rem;">Object and face recognition for personalized experience</p>
+                            <p style="color: #ccc; margin: 0; font-size: 0.9rem;">Object and face recognition for a personalized experience</p>
                         </div>
                     </div>
-                    <div class="polo-feature">
-                        <div class="polo-feature-icon">🔒</div>
+                    <div class="spotlight-feature">
+                        <div class="spotlight-feature-icon">🔒</div>
                         <div>
                             <strong>Privacy-Preserving Security</strong>
                             <p style="color: #ccc; margin: 0; font-size: 0.9rem;">Voice identity verification with enterprise-grade security</p>
                         </div>
                     </div>
-                    <div style="margin-top: 2rem;">
-                        <a href="#investor" class="btn btn-primary" style="margin-right: 1rem;">Watch Demo</a>
-                        <a href="#contact" class="btn btn-secondary">Book a Meeting</a>
+                </div>
+                <div class="spotlight-visual fade-in">
+                    <h3>POLO Robot</h3>
+                    <img src="polo.jpg" alt="POLO Robot" style="width: 80%; margin: 2rem auto; display: block;">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="haya-iq" class="section spotlight" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);">
+        <div class="container">
+            <h2 class="section-title fade-in">HAYA-IQ: A New Standard in Road Safety</h2>
+            <div class="spotlight-content">
+                 <div class="spotlight-visual fade-in">
+    <h3>HAYA-IQ Device Concept</h3>
+    <img src="haya.jpg" alt="HAYA-IQ Logo" style="width: 350px; margin: 2rem auto; display: block; border-radius: 20px;">
+    <p style="color: #ccc; font-style: italic;">*Conceptual render. Final product design may vary.</p>
+</div>
+                    <p style="color: #ccc; font-style: italic;"></p>
+                </div>
+                <div class="spotlight-features fade-in">
+                    <h3 style="color: #00d4ff; font-size: 1.8rem; margin-bottom: 2rem;">
+                        AI-Powered Drunk Driving Prevention Technology
+                    </h3>
+                    <div class="spotlight-feature">
+                        <div class="spotlight-feature-icon">🌬️</div>
+                        <div>
+                            <strong>Real-Time Alcohol Detection</strong>
+                            <p style="color: #ccc; margin: 0; font-size: 0.9rem;">High-precision sensors detect alcohol in a driver’s breath.</p>
+                        </div>
+                    </div>
+                    <div class="spotlight-feature">
+                        <div class="spotlight-feature-icon">🔄</div>
+                        <div>
+                            <strong>Continuous Monitoring</strong>
+                            <p style="color: #ccc; margin: 0; font-size: 0.9rem;">Conducts random, on-road checks to ensure sobriety throughout the journey.</p>
+                        </div>
+                    </div>
+                    <div class="spotlight-feature">
+                        <div class="spotlight-feature-icon">🧠</div>
+                        <div>
+                            <strong>AI-Driven Analysis</strong>
+                            <p style="color: #ccc; margin: 0; font-size: 0.9rem;">Distinguishes intoxication from false triggers like sanitizers.</p>
+                        </div>
+                    </div>
+                    <div class="spotlight-feature">
+                        <div class="spotlight-feature-icon">🔑</div>
+                        <div>
+                            <strong>Vehicle Ignition Integration</strong>
+                            <p style="color: #ccc; margin: 0; font-size: 0.9rem;">Restricts vehicle operation if intoxication is detected.</p>
+                        </div>
+                    </div>
+                    <div class="spotlight-feature">
+                        <div class="spotlight-feature-icon">🔔</div>
+                        <div>
+                            <strong>Instant Safety Alerts</strong>
+                            <p style="color: #ccc; margin: 0; font-size: 0.9rem;">Sends alerts to connected apps or authorities in critical cases.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="polo-visual fade-in">
-                    <h3>POLO Robot Visualization</h3>
-                    <div style="width: 300px; height: 400px; margin: 2rem auto; background: linear-gradient(135deg, #00d4ff, #0099cc); border-radius: 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; position: relative; overflow: hidden;">
-                        <div style="position: absolute; top: 20px; left: 20px; right: 20px; height: 120px; background: #000; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
-                            7" Display
-                        </div>
-                        <div style="position: absolute; top: 160px; left: 50%; transform: translateX(-50%); width: 60px; height: 60px; background: #000; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                            👁️
-                        </div>
-                        <div style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); text-align: center;">
-                            <div style="color: #000; font-weight: bold;">POLO</div>
-                            <div style="color: #000; font-size: 0.8rem;">AI Educational Robot</div>
-                        </div>
-                    </div>
-                    <p style="color: #ccc; font-style: italic;">*3D render and internal component design coming soon</p>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- Investor Section -->
-    <section id="investor" class="section investor">
-        <div class="container">
-            <h2 class="section-title fade-in">Why Aethernova Is Built for the Long Run</h2>
-            <div class="investor-grid">
-                <div class="investor-card fade-in">
-                    <div class="investor-number">$10B+</div>
-                    <div class="investor-label">India's EdTech Market by 2027</div>
-                </div>
-                <div class="investor-card fade-in">
-                    <div class="investor-number">1st</div>
-                    <div class="investor-label">Mover Advantage in School Robotics</div>
-                </div>
-                <div class="investor-card fade-in">
-                    <div class="investor-number">Multi</div>
-                    <div class="investor-label">Revenue Streams (Hardware + Software)</div>
-                </div>
-                <div class="investor-card fade-in">
-                    <div class="investor-number">Scalable</div>
-                    <div class="investor-label">Product Roadmap</div>
-                </div>
-            </div>
-            <div style="text-align: center; margin-top: 3rem;">
-                <a href="#contact" class="btn btn-primary" style="margin-right: 1rem;">Download Pitch Deck</a>
-                <a href="#contact" class="btn btn-secondary" style="margin-right: 1rem;">Request Financials</a>
-                <a href="#contact" class="btn btn-secondary">Schedule Investor Call</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Careers Section -->
-    <section id="careers" class="section careers">
-        <div class="container">
-            <h2 class="section-title fade-in">Join Our Mission</h2>
-            <p style="text-align: center; color: #ccc; font-size: 1.2rem; margin-bottom: 3rem;">
-                Be part of the team that's shaping the future of technology
-            </p>
-            <div class="careers-grid">
-                <div class="career-card fade-in">
-                    <h3>AI Engineer</h3>
-                    <p>Develop cutting-edge AI algorithms and machine learning models</p>
-                </div>
-                <div class="career-card fade-in">
-                    <h3>Robotics Developer</h3>
-                    <p>Design and build the next generation of intelligent robots</p>
-                </div>
-                <div class="career-card fade-in">
-                    <h3>Full-stack Developer</h3>
-                    <p>Build scalable web applications and cloud infrastructure</p>
-                </div>
-                <div class="career-card fade-in">
-                    <h3>Visual Designer</h3>
-                    <p>Create stunning user experiences and product designs</p>
-                </div>
-                <div class="career-card fade-in">
-                    <h3>Software Development</h3>
-                    <p>Develop robust software solutions for complex problems</p>
-                </div>
-                <div class="career-card fade-in">
-                    <h3>Hardware Engineer</h3>
-                    <p>Design innovative hardware systems and embedded solutions</p>
-                </div>
-            </div>
-            <div style="text-align: center; margin-top: 3rem;">
-                <a href="#contact" class="btn btn-primary">View Open Positions</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section about">
-        <div class="container">
-            <h2 class="section-title fade-in">Get In Touch</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; margin-top: 3rem;">
-                <div class="fade-in">
-                    <h3 style="color: #00d4ff; margin-bottom: 2rem;">Contact Options</h3>
-                    <div style="display: grid; gap: 1rem;">
-                        <a href="#" class="btn btn-primary">📅 Book a Demo</a>
-                        <a href="#" class="btn btn-secondary">🤝 Become a Partner</a>
-                        <a href="#" class="btn btn-secondary">💼 Join the Team</a>
-                        <a href="#" class="btn btn-secondary">💰 Invest Now</a>
-                    </div>
-                </div>
-                <div class="fade-in">
-                    <h3 style="color: #00d4ff; margin-bottom: 2rem;">Send us a Message</h3>
-                    <form style="display: grid; gap: 1rem;">
-                        <input type="text" placeholder="Your Name" style="padding: 1rem; border: 1px solid #333; background: rgba(255,255,255,0.1); color: white; border-radius: 8px;">
-                        <input type="email" placeholder="Your Email" style="padding: 1rem; border: 1px solid #333; background: rgba(255,255,255,0.1); color: white; border-radius: 8px;">
-                        <input type="text" placeholder="Company (Optional)" style="padding: 1rem; border: 1px solid #333; background: rgba(255,255,255,0.1); color: white; border-radius: 8px;">
-                        <textarea placeholder="Your Message" rows="4" style="padding: 1rem; border: 1px solid #333; background: rgba(255,255,255,0.1); color: white; border-radius: 8px; resize: vertical;"></textarea>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -870,8 +738,8 @@
                     <ul>
                         <li><a href="#home">Home</a></li>
                         <li><a href="#about">About</a></li>
+                        <li><a href="#team">Leadership</a></li>
                         <li><a href="#projects">Projects</a></li>
-                        <li><a href="#polo">POLO Robot</a></li>
                         <li><a href="#investor">Investors</a></li>
                         <li><a href="#careers">Careers</a></li>
                     </ul>
@@ -880,8 +748,8 @@
                     <h3>Products</h3>
                     <ul>
                         <li><a href="#polo">POLO: AI Educational Robot</a></li>
-                        <li><a href="#projects">AI-Driven Development</a></li>
-                        <li><a href="#projects">Smart Robotics</a></li>
+                        <li><a href="#haya-iq">HAYA-IQ: Safety Tech</a></li>
+                        <li><a href="#projects">Future Innovation Lab</a></li>
                         <li><a href="#projects">Cloud Systems</a></li>
                         <li><a href="#projects">IoT Solutions</a></li>
                     </ul>
@@ -905,152 +773,28 @@
             </div>
         </div>
     </footer>
-
+    
     <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.style.background = 'rgba(10, 10, 10, 0.98)';
-                nav.style.boxShadow = '0 2px 20px rgba(0, 212, 255, 0.1)';
-            } else {
-                nav.style.background = 'rgba(10, 10, 10, 0.95)';
-                nav.style.boxShadow = 'none';
-            }
-        });
-
         // Intersection Observer for fade-in animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
         };
 
-        const observer = new IntersectionObserver(function(entries) {
+        const observer = new IntersectionObserver(function(entries, observer) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
-        // Observe all fade-in elements
         document.querySelectorAll('.fade-in').forEach(el => {
             observer.observe(el);
         });
 
-        // Form submission handler
-        const form = document.querySelector('form');
-        if (form) {
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Get form data
-                const formData = new FormData(this);
-                const name = this.querySelector('input[placeholder="Your Name"]').value;
-                const email = this.querySelector('input[placeholder="Your Email"]').value;
-                const company = this.querySelector('input[placeholder="Company (Optional)"]').value;
-                const message = this.querySelector('textarea').value;
-                
-                // Simple validation
-                if (!name || !email || !message) {
-                    alert('Please fill in all required fields.');
-                    return;
-                }
-                
-                // Simulate form submission
-                const submitBtn = this.querySelector('button[type="submit"]');
-                const originalText = submitBtn.textContent;
-                submitBtn.textContent = 'Sending...';
-                submitBtn.disabled = true;
-                
-                setTimeout(() => {
-                    alert('Thank you for your message! We will get back to you soon.');
-                    this.reset();
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                }, 2000);
-            });
-        }
-
-        // Add some interactive effects
-        document.querySelectorAll('.project-card, .investor-card, .career-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px) scale(1.02)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
-        });
-
-        // POLO feature interactions
-        document.querySelectorAll('.polo-feature').forEach(feature => {
-            feature.addEventListener('click', function() {
-                // Add a pulse effect
-                this.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    this.style.transform = 'scale(1)';
-                }, 150);
-            });
-        });
-
-        // Add typing effect to hero title
-        function typeWriter(element, text, speed = 50) {
-            let i = 0;
-            element.innerHTML = '';
-            
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
-                }
-            }
-            
-            type();
-        }
-
-        // Initialize typing effect when page loads
-        window.addEventListener('load', function() {
-            const heroTitle = document.querySelector('.hero h1');
-            if (heroTitle) {
-                const originalText = heroTitle.textContent;
-                setTimeout(() => {
-                    typeWriter(heroTitle, originalText, 100);
-                }, 500);
-            }
-        });
-
-        // Add parallax effect to hero section
-        window.addEventListener('scroll', function() {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero');
-            if (hero) {
-                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-            }
-        });
-
-        // Button click tracking (for analytics)
-        document.querySelectorAll('.btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                console.log(`Button clicked: ${this.textContent.trim()}`);
-                // Here you would integrate with your analytics service
-            });
-        });
+        // Other scripts from the original file can be included here.
     </script>
 </body>
 </html>
